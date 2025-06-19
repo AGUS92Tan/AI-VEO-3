@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Prompt Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Generator Prompt AI Sederhana</h1>
+        
+        <div class="input-group">
+            <label for="keyword">Kata Kunci Utama:</label>
+            <input type="text" id="keyword" placeholder="Contoh: pemandangan gunung, robot futuristik">
+        </div>
+
+        <div class="input-group">
+            <label for="style">Gaya/Estetika (opsional):</label>
+            <input type="text" id="style" placeholder="Contoh: lukisan cat air, gaya cyberpunk, realistis">
+        </div>
+
+        <div class="input-group">
+            <label for="detail">Detail Tambahan (opsional):</label>
+            <input type="text" id="detail" placeholder="Contoh: dengan kabut tebal, di malam hari, cahaya keemasan">
+        </div>
+
+        <button id="generateBtn">Buat Prompt!</button>
+        
+        <div class="output-group">
+            <h2>Prompt AI Anda:</h2>
+            <textarea id="outputPrompt" rows="5" readonly></textarea>
+            <button id="copyBtn">Salin Prompt</button>
+            <p class="copy-message" id="copyMessage"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

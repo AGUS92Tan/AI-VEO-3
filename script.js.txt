@@ -1,0 +1,54 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const generateBtn = document.getElementById('generateBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const keywordInput = document.getElementById('keyword');
+    const styleInput = document.getElementById('style');
+    const detailInput = document.getElementById('detail');
+    const outputPrompt = document.getElementById('outputPrompt');
+    const copyMessage = document.getElementById('copyMessage');
+
+    generateBtn.addEventListener('click', () => {
+        const keyword = keywordInput.value.trim();
+        const style = styleInput.value.trim();
+        const detail = detailInput.value.trim();
+
+        if (!keyword) {
+            outputPrompt.value = "Mohon masukkan kata kunci utama untuk membuat prompt.";
+            return;
+        }
+
+        let promptParts = [keyword];
+
+        if (style) {
+            promptParts.push(`gaya ${style}`);
+        }
+        if (detail) {
+            promptParts.push(detail);
+        }
+
+        const generatedPrompt = promptParts.join(', ') + '.';
+        outputPrompt.value = generatedPrompt;
+        copyMessage.classList.remove('show'); // Hide message on new generation
+    });
+
+    copyBtn.addEventListener('click', () => {
+        outputPrompt.select(); // Select the text
+        outputPrompt.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text to the clipboard
+        try {
+            navigator.clipboard.writeText(outputPrompt.value);
+            copyMessage.textContent = 'Prompt berhasil disalin!';
+            copyMessage.classList.add('show');
+            setTimeout(() => {
+                copyMessage.classList.remove('show');
+            }, 3000); // Hide message after 3 seconds
+        } catch (err) {
+            copyMessage.textContent = 'Gagal menyalin prompt. Mohon salin secara manual.';
+            copyMessage.classList.add('show');
+            setTimeout(() => {
+                copyMessage.classList.remove('show');
+            }, 3000); // Hide message after 3 seconds
+        }
+    });
+		});
