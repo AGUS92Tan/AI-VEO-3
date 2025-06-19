@@ -1,54 +1,206 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const generateBtn = document.getElementById('generateBtn');
-    const copyBtn = document.getElementById('copyBtn');
-    const keywordInput = document.getElementById('keyword');
-    const styleInput = document.getElementById('style');
-    const detailInput = document.getElementById('detail');
-    const outputPrompt = document.getElementById('outputPrompt');
-    const copyMessage = document.getElementById('copyMessage');
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+}
 
-    generateBtn.addEventListener('click', () => {
-        const keyword = keywordInput.value.trim();
-        const style = styleInput.value.trim();
-        const detail = detailInput.value.trim();
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 700px; /* Lebih lebar untuk lebih banyak opsi */
+    text-align: center;
+}
 
-        if (!keyword) {
-            outputPrompt.value = "Mohon masukkan kata kunci utama untuk membuat prompt.";
-            return;
-        }
+h1 {
+    color: #007bff;
+    margin-bottom: 25px;
+    font-size: 2em;
+}
 
-        let promptParts = [keyword];
+h2 {
+    color: #28a745;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
 
-        if (style) {
-            promptParts.push(`gaya ${style}`);
-        }
-        if (detail) {
-            promptParts.push(detail);
-        }
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
 
-        const generatedPrompt = promptParts.join(', ') + '.';
-        outputPrompt.value = generatedPrompt;
-        copyMessage.classList.remove('show'); // Hide message on new generation
-    });
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
 
-    copyBtn.addEventListener('click', () => {
-        outputPrompt.select(); // Select the text
-        outputPrompt.setSelectionRange(0, 99999); // For mobile devices
+.input-group input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
 
-        // Copy the text to the clipboard
-        try {
-            navigator.clipboard.writeText(outputPrompt.value);
-            copyMessage.textContent = 'Prompt berhasil disalin!';
-            copyMessage.classList.add('show');
-            setTimeout(() => {
-                copyMessage.classList.remove('show');
-            }, 3000); // Hide message after 3 seconds
-        } catch (err) {
-            copyMessage.textContent = 'Gagal menyalin prompt. Mohon salin secara manual.';
-            copyMessage.classList.add('show');
-            setTimeout(() => {
-                copyMessage.classList.remove('show');
-            }, 3000); // Hide message after 3 seconds
-        }
-    });
-});
+/* Tambahan untuk grup opsi (checkboxes/dropdowns) */
+.options-group {
+    margin-bottom: 20px;
+    text-align: left;
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #fcfcfc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.options-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.checkbox-container {
+    display: flex;
+    flex-wrap: wrap; /* Agar checkbox bisa ke baris baru jika banyak */
+    gap: 10px; /* Jarak antar checkbox */
+    margin-bottom: 10px; /* Jarak antara container checkbox dan input teks di bawahnya */
+}
+
+.checkbox-container input[type="checkbox"],
+.checkbox-container input[type="radio"] {
+    margin-right: 5px;
+}
+
+.checkbox-container label {
+    font-weight: normal; /* Override bold dari .options-group label */
+    color: #333;
+    margin-bottom: 0; /* Override margin-bottom dari .options-group label */
+    display: inline-block; /* Agar label dan checkbox sebaris */
+}
+
+.select-option {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    appearance: none; /* Menghilangkan style default browser */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2C114.7L159.2%2C242.5c-4.1%2C4.1-9.9%2C6.4-15.8%2C6.4c-5.9%2C0-11.7-2.3-15.8-6.4L5.4%2C114.7c-4.1-4.1-6.4-9.9-6.4-15.8c0-5.9%2C2.3-11.7%2C6.4-15.8l14.1-14.1c4.1-4.1%2C9.9-6.4%2C15.8-6.4c5.9%2C0%2C11.7%2C2.3%2C15.8%2C6.4L143.8%2C182.2L251.2%2C69.8c4.1-4.1%2C9.9-6.4%2C15.8-6.4c5.9%2C0%2C11.7%2C2.3%2C15.8%2C6.4l14.1%2C14.1c4.1%2C4.1%2C6.4%2C9.9%2C6.4%2C15.8C293.4%2C104.9%2C291.1%2C110.7%2C287%2C114.7z%22%2F%3E%3C%2Fsvg%3E'); /* Icon panah */
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 12px auto;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 30px 0;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 25px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.output-group {
+    margin-top: 30px;
+    text-align: left;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.output-group h2 {
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: vertical;
+    min-height: 150px; /* Lebih tinggi untuk prompt panjang */
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+#copyBtn {
+    background-color: #007bff;
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+#copyBtn:hover {
+    background-color: #0056b3;
+}
+
+.copy-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+.copy-message.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Tambahan untuk grup karakter */
+.character-group {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    background-color: #fcfdff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.character-group h3 { /* Jika pakai h3 di dalam character-group */
+    color: #007bff;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Penyesuaian untuk label radio/checkbox di dalam container */
+.checkbox-container label {
+    margin-left: 5px;
+    margin-right: 15px; /* Jarak antar grup checkbox-label */
+    white-space: nowrap; /* Mencegah label terpotong */
+}
+
+/* Pastikan radio button juga terlihat rapi */
+.checkbox-container input[type="radio"] {
+    margin-right: 5px;
+}

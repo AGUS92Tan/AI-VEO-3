@@ -3,33 +3,327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Prompt Generator</title>
+    <title>AI Prompt Generator Karakter & Film</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Generator Prompt AI Sederhana</h1>
+        <h1>Generator Prompt Karakter & Film Realistis</h1>
         
         <div class="input-group">
-            <label for="keyword">Kata Kunci Utama:</label>
-            <input type="text" id="keyword" placeholder="Contoh: pemandangan gunung, robot futuristik">
+            <label for="keyword">1. Scene/Setting Utama (Wajib):</label>
+            <input type="text" id="keyword" placeholder="Contoh: di hutan lebat, di stasiun luar angkasa">
+        </div>
+
+        <hr>
+
+        <h2>Karakter 1</h2>
+        <div class="character-group">
+            <div class="input-group">
+                <label for="char1_name">Nama/Jenis Karakter 1 (opsional):</label>
+                <input type="text" id="char1_name" placeholder="Contoh: seorang pria tua, seorang wanita muda">
+            </div>
+
+            <div class="options-group">
+                <label>Jenis Kelamin & Usia:</label>
+                <div class="checkbox-container">
+                    <input type="radio" id="char1_gender1" name="char1_gender" value="pria"><label for="char1_gender1">Pria</label>
+                    <input type="radio" id="char1_gender2" name="char1_gender" value="wanita"><label for="char1_gender2">Wanita</label>
+                    <input type="radio" id="char1_gender3" name="char1_gender" value="remaja"><label for="char1_gender3">Remaja</label>
+                    <input type="radio" id="char1_gender4" name="char1_gender" value="anak-anak"><label for="char1_gender4">Anak-anak</label>
+                    <input type="radio" id="char1_gender5" name="char1_gender" value="bayi"><label for="char1_gender5">Bayi</label>
+                </div>
+                <input type="text" id="char1_age" placeholder="Umur (e.g. 30 tahun, usia pertengahan)">
+            </div>
+
+            <div class="options-group">
+                <label>Fisik & Postur:</label>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char1_phys1" value="bertubuh atletis"><label for="char1_phys1">Atletis</label>
+                    <input type="checkbox" id="char1_phys2" value="bertubuh kurus"><label for="char1_phys2">Kurus</label>
+                    <input type="checkbox" id="char1_phys3" value="bertubuh gemuk"><label for="char1_phys3">Gemuk</label>
+                    <input type="checkbox" id="char1_phys4" value="tinggi semampai"><label for="char1_phys4">Tinggi</label>
+                    <input type="checkbox" id="char1_phys5" value="pendek"><label for="char1_phys5">Pendek</label>
+                </div>
+            </div>
+
+            <div class="options-group">
+                <label>Wajah & Ekspresi:</label>
+                <input type="text" id="char1_face_shape" placeholder="Bentuk wajah (e.g. oval, persegi)">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char1_exp1" value="ekspresi senang"><label for="char1_exp1">Senang</label>
+                    <input type="checkbox" id="char1_exp2" value="ekspresi sedih"><label for="char1_exp2">Sedih</label>
+                    <input type="checkbox" id="char1_exp3" value="ekspresi marah"><label for="char1_exp3">Marah</label>
+                    <input type="checkbox" id="char1_exp4" value="ekspresi terkejut"><label for="char1_exp4">Terkejut</label>
+                    <input type="checkbox" id="char1_exp5" value="ekspresi serius"><label for="char1_exp5">Serius</label>
+                </div>
+                <input type="text" id="char1_face_detail" placeholder="Detail wajah lain (e.g. pipi tirus, dagu belah)">
+            </div>
+
+            <div class="options-group">
+                <label>Mata:</label>
+                <input type="text" id="char1_eye_color" placeholder="Warna mata (e.g. biru, coklat)">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char1_eye1" value="mata besar"><label for="char1_eye1">Besar</label>
+                    <input type="checkbox" id="char1_eye2" value="mata sipit"><label for="char1_eye2">Sipit</label>
+                    <input type="checkbox" id="char1_eye3" value="dengan bulu mata lentik"><label for="char1_eye3">Bulu Mata Lentik</label>
+                </div>
+            </div>
+
+            <div class="options-group">
+                <label>Hidung:</label>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char1_nose1" value="hidung mancung"><label for="char1_nose1">Mancung</label>
+                    <input type="checkbox" id="char1_nose2" value="hidung pesek"><label for="char1_nose2">Pesek</label>
+                    <input type="checkbox" id="char1_nose3" value="hidung runcing"><label for="char1_nose3">Runcing</label>
+                </div>
+            </div>
+
+            <div class="options-group">
+                <label>Bibir:</label>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char1_lip1" value="bibir tebal"><label for="char1_lip1">Tebal</label>
+                    <input type="checkbox" id="char1_lip2" value="bibir tipis"><label for="char1_lip2">Tipis</label>
+                    <input type="checkbox" id="char1_lip3" value="bibir merah alami"><label for="char1_lip3">Merah Alami</label>
+                </div>
+            </div>
+
+            <div class="options-group">
+                <label>Rambut:</label>
+                <input type="text" id="char1_hair_style" placeholder="Gaya rambut (e.g. ikal, lurus, keriting)">
+                <input type="text" id="char1_hair_length" placeholder="Panjang rambut (e.g. panjang 10cm, sebahu, panjang sekali)">
+                <input type="text" id="char1_hair_color" placeholder="Warna rambut (e.g. pirang, hitam, coklat)">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char1_hair1" value="rambut terurai"><label for="char1_hair1">Terurai</label>
+                    <input type="checkbox" id="char1_hair2" value="rambut diikat ekor kuda"><label for="char1_hair2">Ekor Kuda</label>
+                    <input type="checkbox" id="char1_hair3" value="rambut berponi"><label for="char1_hair3">Berponi</label>
+                </div>
+            </div>
+
+            <div class="options-group">
+                <label>Warna Kulit & Ciri Khusus:</label>
+                <input type="text" id="char1_skin_color" placeholder="Warna kulit (e.g. sawo matang, putih pucat)">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char1_mark1" value="dengan tahi lalat di pipi kanan"><label for="char1_mark1">Tahi Lalat (Pipi Kanan)</label>
+                    <input type="checkbox" id="char1_mark2" value="dengan tahi lalat di atas bibir"><label for="char1_mark2">Tahi Lalat (Atas Bibir)</label>
+                    <input type="checkbox" id="char1_mark3" value="dengan bekas luka di dahi"><label for="char1_mark3">Bekas Luka (Dahi)</label>
+                    <input type="checkbox" id="char1_mark4" value="dengan bintik-bintik (freckles)"><label for="char1_mark4">Bintik-bintik</label>
+                </div>
+            </div>
+
+            <div class="options-group">
+                <label>Rambut Wajah (khusus pria):</label>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char1_facial_hair1" value="kumis tipis"><label for="char1_facial_hair1">Kumis Tipis</label>
+                    <input type="checkbox" id="char1_facial_hair2" value="kumis tebal"><label for="char1_facial_hair2">Kumis Tebal</label>
+                    <input type="checkbox" id="char1_facial_hair3" value="janggut rapi"><label for="char1_facial_hair3">Janggut Rapi</label>
+                    <input type="checkbox" id="char1_facial_hair4" value="janggut panjang"><label for="char1_facial_hair4">Janggut Panjang</label>
+                </div>
+            </div>
+
+            <div class="options-group">
+                <label>Pakaian/Outfit:</label>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char1_outfit_casual" value="pakaian kasual"><label for="char1_outfit_casual">Kasual (Kaos, Jeans)</label>
+                    <input type="checkbox" id="char1_outfit_formal" value="pakaian formal"><label for="char1_outfit_formal">Formal (Jas, Gaun)</label>
+                    <input type="checkbox" id="char1_outfit_sporty" value="pakaian sporty"><label for="char1_outfit_sporty">Sporty (Training, Jaket)</label>
+                    <input type="checkbox" id="char1_outfit_traditional" value="pakaian tradisional"><label for="char1_outfit_traditional">Tradisional</label>
+                    <input type="checkbox" id="char1_outfit_futuristic" value="pakaian futuristik"><label for="char1_outfit_futuristic">Futuristik</label>
+                    <input type="checkbox" id="char1_outfit_fantasy" value="pakaian fantasi"><label for="char1_outfit_fantasy">Fantasi (Zirah, Jubah)</label>
+                    <input type="checkbox" id="char1_outfit_military" value="pakaian militer"><label for="char1_outfit_military">Militer (Seragam)</label>
+                </div>
+                <input type="text" id="char1_outfit_specific" placeholder="Detail pakaian spesifik (e.g. kemeja flanel, sepatu bot, topi fedora)">
+            </div>
+        </div> <hr>
+
+        <h2>Karakter 2 (Opsional)</h2>
+        <div class="character-group">
+            <div class="input-group">
+                <label for="char2_name">Nama/Jenis Karakter 2 (opsional):</label>
+                <input type="text" id="char2_name" placeholder="Contoh: seorang gadis kecil, robot humanoid">
+            </div>
+
+            <div class="options-group">
+                <label>Jenis Kelamin & Usia:</label>
+                <div class="checkbox-container">
+                    <input type="radio" id="char2_gender1" name="char2_gender" value="pria"><label for="char2_gender1">Pria</label>
+                    <input type="radio" id="char2_gender2" name="char2_gender" value="wanita"><label for="char2_gender2">Wanita</label>
+                    <input type="radio" id="char2_gender3" name="char2_gender" value="remaja"><label for="char2_gender3">Remaja</label>
+                    <input type="radio" id="char2_gender4" name="char2_gender" value="anak-anak"><label for="char2_gender4">Anak-anak</label>
+                    <input type="radio" id="char2_gender5" name="char2_gender" value="bayi"><label for="char2_gender5">Bayi</label>
+                </div>
+                <input type="text" id="char2_age" placeholder="Umur (e.g. 7 tahun, dewasa muda)">
+            </div>
+
+            <div class="options-group">
+                <label>Fisik & Postur:</label>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char2_phys1" value="bertubuh atletis"><label for="char2_phys1">Atletis</label>
+                    <input type="checkbox" id="char2_phys2" value="bertubuh kurus"><label for="char2_phys2">Kurus</label>
+                    <input type="checkbox" id="char2_phys3" value="bertubuh gemuk"><label for="char2_phys3">Gemuk</label>
+                    <input type="checkbox" id="char2_phys4" value="tinggi semampai"><label for="char2_phys4">Tinggi</label>
+                    <input type="checkbox" id="char2_phys5" value="pendek"><label for="char2_phys5">Pendek</label>
+                </div>
+            </div>
+
+            <div class="options-group">
+                <label>Wajah & Ekspresi:</label>
+                <input type="text" id="char2_face_shape" placeholder="Bentuk wajah (e.g. hati, bulat)">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char2_exp1" value="ekspresi senang"><label for="char2_exp1">Senang</label>
+                    <input type="checkbox" id="char2_exp2" value="ekspresi sedih"><label for="char2_exp2">Sedih</label>
+                    <input type="checkbox" id="char2_exp3" value="ekspresi marah"><label for="char2_exp3">Marah</label>
+                    <input type="checkbox" id="char2_exp4" value="ekspresi terkejut"><label for="char2_exp4">Terkejut</label>
+                    <input type="checkbox" id="char2_exp5" value="ekspresi serius"><label for="char2_exp5">Serius</label>
+                </div>
+                <input type="text" id="char2_face_detail" placeholder="Detail wajah lain (e.g. lesung pipi, jenggot tipis)">
+            </div>
+
+            <div class="options-group">
+                <label>Mata:</label>
+                <input type="text" id="char2_eye_color" placeholder="Warna mata (e.g. hijau, abu-abu)">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char2_eye1" value="mata besar"><label for="char2_eye1">Besar</label>
+                    <input type="checkbox" id="char2_eye2" value="mata sipit"><label for="char2_eye2">Sipit</label>
+                    <input type="checkbox" id="char2_eye3" value="dengan bulu mata lentik"><label for="char2_eye3">Bulu Mata Lentik</label>
+                </div>
+            </div>
+
+            <div class="options-group">
+                <label>Hidung:</label>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char2_nose1" value="hidung mancung"><label for="char2_nose1">Mancung</label>
+                    <input type="checkbox" id="char2_nose2" value="hidung pesek"><label for="char2_nose2">Pesek</label>
+                    <input type="checkbox" id="char2_nose3" value="hidung runcing"><label for="char2_nose3">Runcing</label>
+                </div>
+            </div>
+
+            <div class="options-group">
+                <label>Bibir:</label>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char2_lip1" value="bibir tebal"><label for="char2_lip1">Tebal</label>
+                    <input type="checkbox" id="char2_lip2" value="bibir tipis"><label for="char2_lip2">Tipis</label>
+                    <input type="checkbox" id="char2_lip3" value="bibir merah alami"><label for="char2_lip3">Merah Alami</label>
+                </div>
+            </div>
+
+            <div class="options-group">
+                <label>Rambut:</label>
+                <input type="text" id="char2_hair_style" placeholder="Gaya rambut (e.g. bob, kepang)">
+                <input type="text" id="char2_hair_length" placeholder="Panjang rambut (e.g. sangat pendek, sebahu)">
+                <input type="text" id="char2_hair_color" placeholder="Warna rambut (e.g. pirang, hitam, coklat)">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char2_hair1" value="rambut terurai"><label for="char2_hair1">Terurai</label>
+                    <input type="checkbox" id="char2_hair2" value="rambut diikat ekor kuda"><label for="char2_hair2">Ekor Kuda</label>
+                    <input type="checkbox" id="char2_hair3" value="rambut berponi"><label for="char2_hair3">Berponi</label>
+                </div>
+            </div>
+
+            <div class="options-group">
+                <label>Warna Kulit & Ciri Khusus:</label>
+                <input type="text" id="char2_skin_color" placeholder="Warna kulit (e.g. gelap, pucat)">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char2_mark1" value="dengan tahi lalat di pipi kiri"><label for="char2_mark1">Tahi Lalat (Pipi Kiri)</label>
+                    <input type="checkbox" id="char2_mark2" value="dengan tahi lalat di dagu"><label for="char2_mark2">Tahi Lalat (Dagu)</label>
+                    <input type="checkbox" id="char2_mark3" value="dengan bekas luka di lengan"><label for="char2_mark3">Bekas Luka (Lengan)</label>
+                    <input type="checkbox" id="char2_mark4" value="dengan bintik-bintik (freckles)"><label for="char2_mark4">Bintik-bintik</label>
+                </div>
+            </div>
+
+            <div class="options-group">
+                <label>Rambut Wajah (khusus pria):</label>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char2_facial_hair1" value="kumis tipis"><label for="char2_facial_hair1">Kumis Tipis</label>
+                    <input type="checkbox" id="char2_facial_hair2" value="kumis tebal"><label for="char2_facial_hair2">Kumis Tebal</label>
+                    <input type="checkbox" id="char2_facial_hair3" value="janggut rapi"><label for="char2_facial_hair3">Janggut Rapi</label>
+                    <input type="checkbox" id="char2_facial_hair4" value="janggut panjang"><label for="char2_facial_hair4">Janggut Panjang</label>
+                </div>
+            </div>
+
+            <div class="options-group">
+                <label>Pakaian/Outfit:</label>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="char2_outfit_casual" value="pakaian kasual"><label for="char2_outfit_casual">Kasual (Kaos, Jeans)</label>
+                    <input type="checkbox" id="char2_outfit_formal" value="pakaian formal"><label for="char2_outfit_formal">Formal (Jas, Gaun)</label>
+                    <input type="checkbox" id="char2_outfit_sporty" value="pakaian sporty"><label for="char2_outfit_sporty">Sporty (Training, Jaket)</label>
+                    <input type="checkbox" id="char2_outfit_traditional" value="pakaian tradisional"><label for="char2_outfit_traditional">Tradisional</label>
+                    <input type="checkbox" id="char2_outfit_futuristic" value="pakaian futuristik"><label for="char2_outfit_futuristic">Futuristik</label>
+                    <input type="checkbox" id="char2_outfit_fantasy" value="pakaian fantasi"><label for="char2_outfit_fantasy">Fantasi (Zirah, Jubah)</label>
+                    <input type="checkbox" id="char2_outfit_military" value="pakaian militer"><label for="char2_outfit_military">Militer (Seragam)</label>
+                </div>
+                <input type="text" id="char2_outfit_specific" placeholder="Detail pakaian spesifik (e.g. kemeja flanel, sepatu bot, topi fedora)">
+            </div>
+        </div> <hr>
+
+        <h2>Pengaturan Film & Kualitas</h2>
+        <div class="options-group">
+            <label>Gaya & Kualitas Produksi:</label>
+            <div class="checkbox-container">
+                <input type="checkbox" id="prod_qual1" value="film sinematik"><label for="prod_qual1">Sinematik</label>
+                <input type="checkbox" id="prod_qual2" value="fotorealistik"><label for="prod_qual2">Fotorealistik</label>
+                <input type="checkbox" id="prod_qual3" value="hyperrealistic"><label for="prod_qual3">Hyperrealistic</label>
+                <input type="checkbox" id="prod_qual4" value="seperti film hollywood"><label for="prod_qual4">Gaya Hollywood</label>
+                <input type="checkbox" id="prod_qual5" value="ultra detail"><label for="prod_qual5">Ultra Detail</label>
+                <input type="checkbox" id="prod_qual6" value="resolusi 8K"><label for="prod_qual6">Resolusi 8K</label>
+                <input type="checkbox" id="prod_qual7" value="pencahayaan dramatis"><label for="prod_qual7">Pencahayaan Dramatis</label>
+                <input type="checkbox" id="prod_qual8" value="grading warna film"><label for="prod_qual8">Color Grading Film</label>
+                <input type="checkbox" id="prod_qual9" value="dari sudut pandang kamera film"><label for="prod_qual9">Sudut Kamera Film</label>
+                <input type="checkbox" id="prod_qual10" value="dengan kedalaman bidang (depth of field)"><label for="prod_qual10">Depth of Field</label>
+            </div>
+        </div>
+        
+        <div class="options-group">
+            <label>Pencahayaan & Suasana:</label>
+            <div class="checkbox-container">
+                <input type="checkbox" id="light1" value="cahaya alami"><label for="light1">Alami</label>
+                <input type="checkbox" id="light2" value="cahaya neon"><label for="light2">Neon</label>
+                <input type="checkbox" id="light3" value="cahaya studio"><label for="light3">Studio</label>
+                <input type="checkbox" id="light4" value="sinar matahari terbenam"><label for="light4">Senja</label>
+                <input type="checkbox" id="light5" value="pencahayaan lembut"><label for="light5">Lembut</label>
+                <input type="checkbox" id="light6" value="pencahayaan keras"><label for="light6">Keras</label>
+                <input type="checkbox" id="light7" value="cahaya rembulan"><label for="light7">Rembulan</label>
+                <input type="checkbox" id="light8" value="cahaya api"><label for="light8">Api</label>
+                <input type="checkbox" id="light9" value="efek bayangan kuat"><label for="light9">Bayangan Kuat</label>
+            </div>
+        </div>
+
+        <div class="options-group">
+            <label>Sudut Kamera & Komposisi:</label>
+            <div class="checkbox-container">
+                <input type="checkbox" id="cam1" value="sudut lebar"><label for="cam1">Sudut Lebar</label>
+                <input type="checkbox" id="cam2" value="close-up"><label for="cam2">Close-up</label>
+                <input type="checkbox" id="cam3" value="medium shot"><label for="cam3">Medium Shot</label>
+                <input type="checkbox" id="cam4" value="full shot"><label for="cam4">Full Shot</label>
+                <input type="checkbox" id="cam5" value="dari atas (bird's-eye view)"><label for="cam5">Dari Atas</label>
+                <input type="checkbox" id="cam6" value="dari bawah (worm's-eye view)"><label for="cam6">Dari Bawah</label>
+                <input type="checkbox" id="cam7" value="perspektif mata manusia"><label for="cam7">Mata Manusia</label>
+                <input type="checkbox" id="cam8" value="dolly zoom effect"><label for="cam8">Dolly Zoom</label>
+                <input type="checkbox" id="cam9" value="komposisi sepertiga"><label for="cam9">Rule of Thirds</label>
+            </div>
+        </div>
+
+        <div class="options-group">
+            <label>Objek & Detail Tambahan Scene:</label>
+            <input type="text" id="scene_objects" placeholder="Contoh: meja kayu tua, vas bunga kristal, pedang di dinding">
+            <input type="text" id="scene_colors" placeholder="Warna dominan scene (e.g. palet warna biru-hijau, merah menyala)">
+            <input type="text" id="scene_atmosphere" placeholder="Suasana/efek (e.g. kabut tipis, hujan rintik, asap, efek debu)">
         </div>
 
         <div class="input-group">
-            <label for="style">Gaya/Estetika (opsional):</label>
-            <input type="text" id="style" placeholder="Contoh: lukisan cat air, gaya cyberpunk, realistis">
+            <label for="style">Gaya/Estetika Global (opsional, teks bebas):</label>
+            <input type="text" id="style" placeholder="Contoh: gaya cyberpunk, steampunk, retro-futuristic">
         </div>
 
         <div class="input-group">
-            <label for="detail">Detail Tambahan (opsional):</label>
-            <input type="text" id="detail" placeholder="Contoh: dengan kabut tebal, di malam hari, cahaya keemasan">
+            <label for="detail">Detail Umum Tambahan (opsional, teks bebas):</label>
+            <input type="text" id="detail" placeholder="Contoh: dengan tekstur kasar, detail mikroskopis">
         </div>
 
-        <button id="generateBtn">Buat Prompt!</button>
+        <button id="generateBtn">Buat Prompt Super Detail!</button>
         
         <div class="output-group">
             <h2>Prompt AI Anda:</h2>
-            <textarea id="outputPrompt" rows="5" readonly></textarea>
+            <textarea id="outputPrompt" rows="15" readonly></textarea>
             <button id="copyBtn">Salin Prompt</button>
             <p class="copy-message" id="copyMessage"></p>
         </div>
