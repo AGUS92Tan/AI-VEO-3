@@ -1,0 +1,225 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const generateBtn = document.getElementById('generateBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const outputPrompt = document.getElementById('outputPrompt');
+    const copyMessage = document.getElementById('copyMessage');
+
+    generateBtn.addEventListener('click', () => {
+        let promptParts = [];
+
+        // 1. Scene/Setting Utama (Wajib)
+        const keyword = document.getElementById('keyword').value.trim();
+        if (keyword) {
+            promptParts.push(keyword);
+        } else {
+            outputPrompt.value = "Mohon masukkan Scene/Setting Utama.";
+            return;
+        }
+
+        // --- KARAKTER 1 ---
+        let char1Parts = [];
+        const char1_name = document.getElementById('char1_name').value.trim();
+        if (char1_name) char1Parts.push(char1_name);
+
+        // Gender & Usia
+        const char1_gender = document.querySelector('input[name="char1_gender"]:checked');
+        if (char1_gender) char1Parts.push(char1_gender.value);
+        const char1_age = document.getElementById('char1_age').value.trim();
+        if (char1_age) char1Parts.push(char1_age);
+
+        // Fisik & Postur
+        document.querySelectorAll('.character-group:nth-of-type(1) input[id^="char1_phys"]:checked').forEach(checkbox => {
+            char1Parts.push(checkbox.value);
+        });
+
+        // Wajah & Ekspresi
+        const char1_face_shape = document.getElementById('char1_face_shape').value.trim();
+        if (char1_face_shape) char1Parts.push(`wajah ${char1_face_shape}`);
+        document.querySelectorAll('.character-group:nth-of-type(1) input[id^="char1_exp"]:checked').forEach(checkbox => {
+            char1Parts.push(checkbox.value);
+        });
+        const char1_face_detail = document.getElementById('char1_face_detail').value.trim();
+        if (char1_face_detail) char1Parts.push(char1_face_detail);
+
+        // Mata
+        const char1_eye_color = document.getElementById('char1_eye_color').value.trim();
+        if (char1_eye_color) char1Parts.push(`mata ${char1_eye_color}`);
+        document.querySelectorAll('.character-group:nth-of-type(1) input[id^="char1_eye"]:checked').forEach(checkbox => {
+            char1Parts.push(checkbox.value);
+        });
+
+        // Hidung
+        document.querySelectorAll('.character-group:nth-of-type(1) input[id^="char1_nose"]:checked').forEach(checkbox => {
+            char1Parts.push(checkbox.value);
+        });
+
+        // Bibir
+        document.querySelectorAll('.character-group:nth-of-type(1) input[id^="char1_lip"]:checked').forEach(checkbox => {
+            char1Parts.push(checkbox.value);
+        });
+
+        // Rambut
+        const char1_hair_style = document.getElementById('char1_hair_style').value.trim();
+        if (char1_hair_style) char1Parts.push(`rambut ${char1_hair_style}`);
+        const char1_hair_length = document.getElementById('char1_hair_length').value.trim();
+        if (char1_hair_length) char1Parts.push(char1_hair_length);
+        const char1_hair_color = document.getElementById('char1_hair_color').value.trim();
+        if (char1_hair_color) char1Parts.push(`warna rambut ${char1_hair_color}`);
+        document.querySelectorAll('.character-group:nth-of-type(1) input[id^="char1_hair"]:checked').forEach(checkbox => {
+            char1Parts.push(checkbox.value);
+        });
+
+        // Warna Kulit & Ciri Khusus
+        const char1_skin_color = document.getElementById('char1_skin_color').value.trim();
+        if (char1_skin_color) char1Parts.push(`kulit ${char1_skin_color}`);
+        document.querySelectorAll('.character-group:nth-of-type(1) input[id^="char1_mark"]:checked').forEach(checkbox => {
+            char1Parts.push(checkbox.value);
+        });
+
+        // Rambut Wajah
+        document.querySelectorAll('.character-group:nth-of-type(1) input[id^="char1_facial_hair"]:checked').forEach(checkbox => {
+            char1Parts.push(checkbox.value);
+        });
+
+        // Pakaian/Outfit
+        document.querySelectorAll('input[id^="char1_outfit_"]:checked').forEach(checkbox => {
+            char1Parts.push(checkbox.value);
+        });
+        const char1_outfit_specific = document.getElementById('char1_outfit_specific').value.trim();
+        if (char1_outfit_specific) char1Parts.push(char1_outfit_specific);
+        
+        if (char1Parts.length > 0) {
+            promptParts.push(`Karakter 1: ${char1Parts.join(', ')}`);
+        }
+
+        // --- KARAKTER 2 ---
+        let char2Parts = [];
+        const char2_name = document.getElementById('char2_name').value.trim();
+        if (char2_name) char2Parts.push(char2_name);
+
+        // Gender & Usia
+        const char2_gender = document.querySelector('input[name="char2_gender"]:checked');
+        if (char2_gender) char2Parts.push(char2_gender.value);
+        const char2_age = document.getElementById('char2_age').value.trim();
+        if (char2_age) char2Parts.push(char2_age);
+
+        // Fisik & Postur
+        document.querySelectorAll('.character-group:nth-of-type(2) input[id^="char2_phys"]:checked').forEach(checkbox => {
+            char2Parts.push(checkbox.value);
+        });
+
+        // Wajah & Ekspresi
+        const char2_face_shape = document.getElementById('char2_face_shape').value.trim();
+        if (char2_face_shape) char2Parts.push(`wajah ${char2_face_shape}`);
+        document.querySelectorAll('.character-group:nth-of-type(2) input[id^="char2_exp"]:checked').forEach(checkbox => {
+            char2Parts.push(checkbox.value);
+        });
+        const char2_face_detail = document.getElementById('char2_face_detail').value.trim();
+        if (char2_face_detail) char2Parts.push(char2_face_detail);
+
+        // Mata
+        const char2_eye_color = document.getElementById('char2_eye_color').value.trim();
+        if (char2_eye_color) char2Parts.push(`mata ${char2_eye_color}`);
+        document.querySelectorAll('.character-group:nth-of-type(2) input[id^="char2_eye"]:checked').forEach(checkbox => {
+            char2Parts.push(checkbox.value);
+        });
+
+        // Hidung
+        document.querySelectorAll('.character-group:nth-of-type(2) input[id^="char2_nose"]:checked').forEach(checkbox => {
+            char2Parts.push(checkbox.value);
+        });
+
+        // Bibir
+        document.querySelectorAll('.character-group:nth-of-type(2) input[id^="char2_lip"]:checked').forEach(checkbox => {
+            char2Parts.push(checkbox.value);
+        });
+
+        // Rambut
+        const char2_hair_style = document.getElementById('char2_hair_style').value.trim();
+        if (char2_hair_style) char2Parts.push(`rambut ${char2_hair_style}`);
+        const char2_hair_length = document.getElementById('char2_hair_length').value.trim();
+        if (char2_hair_length) char2Parts.push(char2_hair_length);
+        const char2_hair_color = document.getElementById('char2_hair_color').value.trim();
+        if (char2_hair_color) char2Parts.push(`warna rambut ${char2_hair_color}`);
+        document.querySelectorAll('.character-group:nth-of-type(2) input[id^="char2_hair"]:checked').forEach(checkbox => {
+            char2Parts.push(checkbox.value);
+        });
+
+        // Warna Kulit & Ciri Khusus
+        const char2_skin_color = document.getElementById('char2_skin_color').value.trim();
+        if (char2_skin_color) char2Parts.push(`kulit ${char2_skin_color}`);
+        document.querySelectorAll('.character-group:nth-of-type(2) input[id^="char2_mark"]:checked').forEach(checkbox => {
+            char2Parts.push(checkbox.value);
+        });
+
+        // Rambut Wajah
+        document.querySelectorAll('.character-group:nth-of-type(2) input[id^="char2_facial_hair"]:checked').forEach(checkbox => {
+            char2Parts.push(checkbox.value);
+        });
+
+        // Pakaian/Outfit
+        document.querySelectorAll('input[id^="char2_outfit_"]:checked').forEach(checkbox => {
+            char2Parts.push(checkbox.value);
+        });
+        const char2_outfit_specific = document.getElementById('char2_outfit_specific').value.trim();
+        if (char2_outfit_specific) char2Parts.push(char2_outfit_specific);
+        
+        if (char2Parts.length > 0) {
+            promptParts.push(`Karakter 2: ${char2Parts.join(', ')}`);
+        }
+
+        // --- Pengaturan Film & Kualitas ---
+        document.querySelectorAll('input[id^="prod_qual"]:checked').forEach(checkbox => {
+            promptParts.push(checkbox.value);
+        });
+
+        document.querySelectorAll('input[id^="light"]:checked').forEach(checkbox => {
+            promptParts.push(checkbox.value);
+        });
+        document.querySelectorAll('input[id^="cam"]:checked').forEach(checkbox => {
+            promptParts.push(checkbox.value);
+        });
+        
+        // Objek & Detail Tambahan Scene
+        const scene_objects = document.getElementById('scene_objects').value.trim();
+        if (scene_objects) promptParts.push(scene_objects);
+        const scene_colors = document.getElementById('scene_colors').value.trim();
+        if (scene_colors) promptParts.push(`warna dominan ${scene_colors}`);
+        const scene_atmosphere = document.getElementById('scene_atmosphere').value.trim();
+        if (scene_atmosphere) promptParts.push(scene_atmosphere);
+
+        // Gaya/Estetika Global (lama, input teks)
+        const styleInput = document.getElementById('style').value.trim();
+        if (styleInput) promptParts.push(styleInput);
+
+        // Detail Umum Tambahan (lama, input teks)
+        const detailInput = document.getElementById('detail').value.trim();
+        if (detailInput) promptParts.push(detailInput);
+
+
+        // Final Prompt Assembly
+        const generatedPrompt = promptParts.filter(part => part !== '').join(', ') + '.';
+        outputPrompt.value = generatedPrompt;
+        copyMessage.classList.remove('show'); // Hide message on new generation
+    });
+
+    copyBtn.addEventListener('click', () => {
+        outputPrompt.select(); // Select the text
+        outputPrompt.setSelectionRange(0, 99999); // For mobile devices
+
+        try {
+            navigator.clipboard.writeText(outputPrompt.value);
+            copyMessage.textContent = 'Prompt berhasil disalin!';
+            copyMessage.classList.add('show');
+            setTimeout(() => {
+                copyMessage.classList.remove('show');
+            }, 3000); // Hide message after 3 seconds
+        } catch (err) {
+            copyMessage.textContent = 'Gagal menyalin prompt. Mohon salin secara manual.';
+            copyMessage.classList.add('show');
+            setTimeout(() => {
+                copyMessage.classList.remove('show');
+            }, 3000); // Hide message after 3 seconds
+        }
+    });
+});
